@@ -1,28 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <custom-header/>
+    <main-screen/>
+    <note-screen/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CustomHeader from './components/CustomHeader.vue'
+import MainScreen from './views/MainScreen.vue'
+import NoteScreen from './views/NoteScreen.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CustomHeader,
+    MainScreen,
+    NoteScreen,
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
 }
 </style>
