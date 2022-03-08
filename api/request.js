@@ -8,7 +8,7 @@ const path = {
 };
 
 export class Request {
-    static async getRequest() {
+    static async get() {
         const res = await axios
             .get(path.get)
             .catch((err) => {
@@ -19,7 +19,7 @@ export class Request {
         return res.data;
     }
 
-    static async postRequest(data) {
+    static async post(data) {
         await axios
             .post(path.post, data)
             .then(() => {
@@ -31,7 +31,7 @@ export class Request {
             })
     }
 
-    static async putRequest(data) {
+    static async put(data) {
         await axios
             .put(path.put, data)
             .then(() => {
@@ -43,7 +43,7 @@ export class Request {
             })
     }
 
-    static async deleteRequest(data) {
+    static async delete(data) {
         await axios
             .delete(path.delete, { data: data })
             .then( () => {

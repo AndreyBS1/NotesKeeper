@@ -9,17 +9,18 @@
           New Note
         </b-button>
     </div>
-    <note-card class="note-card"/>
-    <note-card class="note-card"/>
-    <note-card class="note-card"/>
-    <note-card class="note-card"/>
-    <note-card class="note-card"/>
-    <note-card class="note-card"/>
+    <note-card
+      class="note-card"
+      v-for="note in notes"
+      :note="note"
+      :key="note.id"
+    />
   </div>
 </template>
 
 <script>
 import NoteCard from '../components/NoteCard.vue'
+import Request from '../../api/request'
 
 export default {
   name: 'MainScreen',
@@ -29,13 +30,24 @@ export default {
   data() {
     return {
       visible: true,
+      notes: [],
     }
   },
   methods: {
     clickOnCreateButton() {
       this.visible = false;
+    },
+    
+    async getNotes() {
+      this.notes = await Request.getRequest(path.get);
+      console.log("Displayed data:");
+      console.log(this.notes);
     }
-  }
+  },
+
+  async mounted() {
+    await this.getNotes();
+  },
 }
 </script>
 
