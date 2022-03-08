@@ -7,7 +7,7 @@ const path = {
     delete: 'https://radiant-everglades-87553.herokuapp.com/noteskeeper/delete',
 };
 
-export class Request {
+class Request {
     static async get() {
         const res = await axios
             .get(path.get)
@@ -55,3 +55,5 @@ export class Request {
             })
     }
 }
+
+module.exports = Request;
