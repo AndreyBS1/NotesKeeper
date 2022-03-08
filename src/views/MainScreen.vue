@@ -40,9 +40,8 @@ export default {
     
     async getNotes() {
       this.notes = await Request.get();
-      console.log("Displayed data:");
+      console.log("\n\nDisplayed data:\n\n");
       console.log(this.notes);
-      // console.log('\n\nRequest class:\n\n' + Request);
     }
   },
 

@@ -1,10 +1,10 @@
 <template>
     <div>
         <b-card
-            :title='note.title'
+            :title="note.note_title"
         >
             <b-card-text>
-                {{ note.text }}
+                {{ note.note_text }}
             </b-card-text>
         </b-card>
     </div>
