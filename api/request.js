@@ -9,20 +9,14 @@ const path = {
 
 class Request {
     static async get() {
-        const resData = await axios
+        const res = await axios
             .get(path.get)
             .catch((err) => {
                 console.log(err);
             })
-        
-        // console.log('\n\nGET\nResponse:\n\n');
-        // console.log(resData.data);
-
-        // const res = JSON.parse(JSON.stringify(resData.data));
-        // console.log('\n\n');
-        // console.log(res);
-
-        return resData.data;
+        console.log("\nGet\nRequest:\n\n");
+        console.log(res.data);
+        return res.data;
     }
 
     static async post(data) {

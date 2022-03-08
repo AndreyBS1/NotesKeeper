@@ -1,14 +1,11 @@
 <template>
     <div>
         <div>
-            Note title
+            {{ note.note_title }}
+            <b-button @click="clickOnBackButton">Back</b-button>
         </div>
         <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Aliquam lobortis ante sapien, at luctus libero viverra vitae. 
-            Praesent blandit metus id pretium bibendum. In consectetur nulla 
-            vitae dignissim ullamcorper. Quisque ullamcorper suscipit elit, a 
-            elementum metus volutpat vel.
+            {{ note.note_text }}
         </div>
     </div>    
 </template>
@@ -16,6 +13,23 @@
 <script>
 export default {
     name: "NoteScreen",
+
+    props: {
+        note: {
+            type: Object,
+            default() {
+                return {}
+            }
+        }
+    },
+
+    emits: ['back-to-main-screen'],
+
+    methods: {
+        clickOnBackButton() {
+            this.$emit('back-to-main-screen');
+        }
+    }
 }
 </script>
 
