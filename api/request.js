@@ -14,13 +14,13 @@ class Request {
             .catch((err) => {
                 console.log(err);
             })
-        console.log("\nGet\nRequest:\n\n");
+        console.log("\nGet\nResponse:\n\n");
         console.log(res.data);
         return res.data;
     }
 
     static async post(data) {
-        await axios
+        const res = await axios
             .post(path.post, data)
             .then(() => {
                 console.log("\nPOST\nRequest:");

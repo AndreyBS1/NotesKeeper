@@ -74,9 +74,9 @@ export default {
 
         async clickOnSaveButton() {
             if (this.noteObject.id) {
-                await Request.put(JSON.stringify(this.noteObject));
+                await Request.put(this.noteObject);
             } else {
-                await Request.post(JSON.stringify(this.noteObject));
+                await Request.post(this.noteObject);
             }
         }
     }
