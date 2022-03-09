@@ -5,6 +5,7 @@
       v-show="mainScreenVisible"
       @create-note="eventToCreateNote"
       @view-note="eventToViewNote"
+      :notes="notes"
     />
     <note-screen
       v-show="noteScreenVisible"
@@ -18,6 +19,7 @@
 import CustomHeader from './components/CustomHeader.vue'
 import MainScreen from './views/MainScreen.vue'
 import NoteScreen from './views/NoteScreen.vue'
+import Request from '../api/request'
 
 export default {
   name: 'App',
@@ -31,6 +33,7 @@ export default {
   data() {
     return {
       note: {},
+      notes: [],
       mainScreenVisible: true,
       noteScreenVisible: false,
     }
@@ -49,11 +52,22 @@ export default {
       this.noteScreenVisible = true;
     },
     
-    eventToReturnToMainScreen() {
+    async eventToReturnToMainScreen() {
+      await this.getNotes();
       this.noteScreenVisible = false;
       this.mainScreenVisible = true;
     },
-  }
+    
+    async getNotes() {
+      this.notes = await Request.get();
+      console.log("\n\nDisplayed data:\n\n");
+      console.log(this.notes);
+    }
+  },
+
+  async mounted() {
+    await this.getNotes();
+  },
 }
 </script>
 

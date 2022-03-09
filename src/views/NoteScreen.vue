@@ -54,7 +54,7 @@ export default {
         note: {
             type: Object,
             default() {
-                return {}
+                return {};
             }
         }
     },

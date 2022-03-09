@@ -11,7 +11,7 @@
     </div>
     <note-card
       class="note-card"
-      v-for="note in notes"
+      v-for="note in notesArray"
       :key="note.id"
       :note="note"
       @click-on-note-card="clickOnNoteCard"
@@ -21,7 +21,7 @@
 
 <script>
 import NoteCard from '../components/NoteCard.vue'
-import Request from '../../api/request'
+// import Request from '../../api/request'
 
 export default {
   name: 'MainScreen',
@@ -29,12 +29,27 @@ export default {
   components: {
     NoteCard,
   },
+    
+  props: {
+    notes: {
+      type: Array,
+      default() {
+        return [];
+      }
+    }
+  },
 
   emits: ['create-note', 'view-note'],
 
-  data() {
-    return {
-      notes: [],
+  // data() {
+  //   return {
+  //     notes: [],
+  //   }
+  // },
+
+  computed: {
+    notesArray() {
+      return this.notes;
     }
   },
 
@@ -49,16 +64,16 @@ export default {
       this.$emit('view-note', note);
     },
     
-    async getNotes() {
-      this.notes = await Request.get();
-      console.log("\n\nDisplayed data:\n\n");
-      console.log(this.notes);
-    }
+    // async getNotes() {
+    //   this.notes = await Request.get();
+    //   console.log("\n\nDisplayed data:\n\n");
+    //   console.log(this.notes);
+    // }
   },
 
-  async mounted() {
-    await this.getNotes();
-  },
+  // async mounted() {
+  //   await this.getNotes();
+  // },
 }
 </script>
 
