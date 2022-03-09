@@ -20,7 +20,7 @@ class Request {
     }
 
     static async post(data) {
-        const res = await axios
+        await axios
             .post(path.post, data)
             .then(() => {
                 console.log("\nPOST\nRequest:");
