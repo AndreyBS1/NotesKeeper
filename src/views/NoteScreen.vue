@@ -14,6 +14,7 @@
                     <b-button
                         pill
                         variant="outline-dark"
+                        @click="clickOnSaveButton"
                     >
                         Save
                     </b-button>
@@ -44,6 +45,8 @@
 </template>
 
 <script>
+import Request from '../../api/request'
+
 export default {
     name: "NoteScreen",
 
@@ -67,6 +70,14 @@ export default {
     methods: {
         clickOnBackButton() {
             this.$emit('back-to-main-screen');
+        },
+
+        async clickOnSaveButton() {
+            if (this.noteObject.id) {
+                await Request.put(JSON.stringify(this.noteObject));
+            } else {
+                await Request.post(JSON.stringify(this.noteObject));
+            }
         }
     }
 }
