@@ -9,17 +9,13 @@
           New Note
         </b-button>
     </div>
-    <div
-      class="notes-list"
+    <note-card
+      class="note-card"
       v-for="note in notes"
       :key="note.id"
-    >
-      <note-card
-        class="note-card"
-        :note="note"
-        @click-on-note-card="clickOnNoteCard"
-      />
-    </div>
+      :note="note"
+      @click-on-note-card="clickOnNoteCard"
+    />
   </div>
 </template>
 
@@ -68,6 +64,10 @@ export default {
 
 <style scoped>
 .main-screen {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
   padding: 3% 5%;
 }
 
@@ -76,13 +76,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.notes-list {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
 }
 
 .note-card {
