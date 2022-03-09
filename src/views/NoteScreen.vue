@@ -90,7 +90,6 @@ export default {
 
 .title-input-area {
     display: flex;
-    /* justify-content: space-between; */
 }
 
 .title-input {

@@ -21,7 +21,6 @@
 
 <script>
 import NoteCard from '../components/NoteCard.vue'
-// import Request from '../../api/request'
 
 export default {
   name: 'MainScreen',
@@ -41,12 +40,6 @@ export default {
 
   emits: ['create-note', 'view-note'],
 
-  // data() {
-  //   return {
-  //     notes: [],
-  //   }
-  // },
-
   computed: {
     notesArray() {
       return this.notes;
@@ -63,17 +56,7 @@ export default {
       this.visible = false;
       this.$emit('view-note', note);
     },
-    
-    // async getNotes() {
-    //   this.notes = await Request.get();
-    //   console.log("\n\nDisplayed data:\n\n");
-    //   console.log(this.notes);
-    // }
   },
-
-  // async mounted() {
-  //   await this.getNotes();
-  // },
 }
 </script>
 
