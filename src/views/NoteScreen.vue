@@ -82,10 +82,14 @@ export default {
         },
 
         async clickOnSaveButton() {
-            if (this.noteObject.id) {
-                await Request.put(this.noteObject);
+            if (this.noteObject.note_title && this.noteObject.note_text) {
+                if (this.noteObject.id) {
+                    await Request.put(this.noteObject);
+                } else {
+                    await Request.post(this.noteObject);
+                }
             } else {
-                await Request.post(this.noteObject);
+                alert("Please fill in the Title and Text fields!");
             }
         },
 
