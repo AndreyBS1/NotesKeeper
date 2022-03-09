@@ -13,10 +13,19 @@
                 <div class="button">
                     <b-button
                         pill
-                        variant="outline-dark"
+                        variant="outline-success"
                         @click="clickOnSaveButton"
                     >
                         Save
+                    </b-button>
+                </div>
+                <div class="button">
+                    <b-button
+                        pill
+                        variant="outline-danger"
+                        @click="clickOnDeleteButton"
+                    >
+                        Delete
                     </b-button>
                 </div>
                 <div class="button">
@@ -78,6 +87,11 @@ export default {
             } else {
                 await Request.post(this.noteObject);
             }
+        },
+
+        async clickOnDeleteButton() {
+            await Request.delete(this.noteObject);
+            this.$emit('back-to-main-screen');
         }
     }
 }
