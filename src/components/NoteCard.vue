@@ -1,17 +1,19 @@
 <template>
-    <div>
-        <a @click="$emit('click-on-note-card', note)">
-            <b-card
-                border-variant="dark"
-                class="width-height-100"
-                :title="note.note_title"
-            >
+    <b-card
+        border-variant="dark"
+        no-body
+    >
+        <b-card-body>
+            <a @click="$emit('click-on-note-card', note)">
+                <b-card-title>
+                    {{ note.note_title }}
+                </b-card-title>
                 <b-card-text>
                     {{ note.note_text }}
                 </b-card-text>
-            </b-card>
-        </a>
-    </div>
+            </a>
+        </b-card-body>
+    </b-card>
 </template>
 
 <script>

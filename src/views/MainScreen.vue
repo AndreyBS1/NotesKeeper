@@ -78,6 +78,7 @@ export default {
 
 .note-card {
   width: 30%;
+  height: 100%;
   margin: 3% 0;
   cursor: pointer;
 }
