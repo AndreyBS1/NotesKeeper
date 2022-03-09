@@ -4,7 +4,13 @@
             <div class='project-name'>NOTES KEEPER</div>
             <div class='log-options'>
                 <div class='log-in'>
-                    <b-button pill variant="outline-dark">Log in</b-button>
+                    <b-button
+                        pill
+                        variant="outline-dark"
+                        @click="clickOnLogInButton"
+                    >
+                        Log in
+                    </b-button>
                 </div>
                 <div class='profile-icon' v-if='false'>Icon</div>
             </div>
@@ -15,6 +21,12 @@
 <script>
 export default {
     name: "CustomHeader",
+
+    methods: {
+        clickOnLogInButton() {
+            alert("This feature is not working yet!");
+        }
+    }
 }
 </script>
 
