@@ -3,16 +3,16 @@
         border-variant="dark"
         no-body
     >
-        <b-card-body>
-            <a @click="$emit('click-on-note-card', note)">
+        <a @click="$emit('click-on-note-card', note)">
+            <b-card-body>
                 <b-card-title>
                     {{ note.note_title }}
                 </b-card-title>
                 <b-card-text>
                     {{ note.note_text }}
                 </b-card-text>
-            </a>
-        </b-card-body>
+            </b-card-body>
+        </a>
     </b-card>
 </template>
 
