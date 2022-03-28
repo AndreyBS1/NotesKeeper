@@ -24,6 +24,7 @@
                         pill
                         variant="outline-danger"
                         @click="clickOnDeleteButton"
+                        :disabled="isDisabled"
                     >
                         Delete
                     </b-button>
@@ -73,6 +74,15 @@ export default {
     computed: {
         noteObject() {
             return this.note;
+        },
+
+        isDisabled: {
+            get: function() {
+                return (this.noteObject.note_title && this.noteObject.note_text) ? false : true;
+            },
+            set: function(value) {
+                return value;
+            }
         }
     },
 
@@ -94,6 +104,7 @@ export default {
         },
 
         async clickOnDeleteButton() {
+            this.isDisabled = true;
             await Request.delete(this.noteObject);
             this.$emit('back-to-main-screen');
         }

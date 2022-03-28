@@ -11,11 +11,16 @@
     </div>
     <note-card
       class="note-card"
+      v-show="hasNotes"
       v-for="note in notesArray"
       :key="note.id"
       :note="note"
       @click-on-note-card="clickOnNoteCard"
     />
+    <div class="no-notes" v-show="!hasNotes">
+      <h3>There's no Notes to show!</h3>
+      <h6>Click on "New Note" button to create one</h6>
+    </div>
   </div>
 </template>
 
@@ -43,6 +48,10 @@ export default {
   computed: {
     notesArray() {
       return this.notes;
+    },
+
+    hasNotes() {
+      return (this.notesArray.length > 0) ? true : false;
     }
   },
 
@@ -81,5 +90,10 @@ export default {
   height: 100%;
   margin: 3% 0;
   cursor: pointer;
+}
+
+.no-notes {
+  padding: 3% 0;
+  text-align: center;
 }
 </style>
