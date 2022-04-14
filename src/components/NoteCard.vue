@@ -1,6 +1,6 @@
 <template>
-  <b-card border-variant="dark" no-body>
-    <a @click="$emit('click-on-note-card', note)">
+  <router-link :to="'/notes/' + note.id" class="text-link">
+    <b-card border-variant="dark" no-body>
       <b-card-body>
         <b-card-title>
           {{ note.note_title }}
@@ -9,8 +9,8 @@
           {{ note.note_text }}
         </b-card-text>
       </b-card-body>
-    </a>
-  </b-card>
+    </b-card>
+  </router-link>
 </template>
 
 <script>
@@ -25,8 +25,6 @@ export default {
       },
     },
   },
-
-  emits: ["click-on-note-card"],
 };
 </script>
 

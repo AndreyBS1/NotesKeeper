@@ -1,7 +1,9 @@
 <template>
   <div class="header-background">
     <b-navbar class="navbar">
-      <div class="project-name">NOTES KEEPER</div>
+      <div class="project-name">
+        <router-link to="/" class="text-link"> NOTES KEEPER</router-link>
+      </div>
       <div class="log-options">
         <div class="log-in">
           <b-button pill variant="outline-dark" @click="clickOnLogInButton">

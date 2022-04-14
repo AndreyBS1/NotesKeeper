@@ -1,7 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import Homepage from "@/views/HomepageView";
+import HomepageView from "@/views/HomepageView";
+import NoteView from "@/views/NoteView";
 
 Vue.use(VueRouter);
 
@@ -9,7 +10,18 @@ const routes = [
   {
     path: "/",
     name: "Homepage",
-    component: Homepage,
+    component: HomepageView,
+  },
+
+  {
+    path: "/notes/new",
+    name: "New note",
+    component: NoteView,
+  },
+  {
+    path: "/notes/:id",
+    name: "Existing note",
+    component: NoteView,
   },
 ];
 

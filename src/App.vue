@@ -23,7 +23,7 @@
 import CustomHeader from "@/components/CustomHeader.vue";
 // import MainScreen from "@/views/MainScreen.vue";
 // import NoteScreen from "@/views/NoteScreen.vue";
-import Request from "@/api/request";
+// import Request from "@/api/request";
 
 export default {
   name: "App",
@@ -36,45 +36,45 @@ export default {
 
   data() {
     return {
-      note: {},
-      notes: [],
-      mainScreenVisible: false,
-      noteScreenVisible: false,
+      //     note: {},
+      //     notes: [],
+      //     mainScreenVisible: false,
+      //     noteScreenVisible: false,
       loading: true,
     };
   },
 
-  methods: {
-    eventToCreateNote() {
-      this.note = {};
-      this.mainScreenVisible = false;
-      this.noteScreenVisible = true;
-    },
+  // methods: {
+  //   eventToCreateNote() {
+  //     this.note = {};
+  //     this.mainScreenVisible = false;
+  //     this.noteScreenVisible = true;
+  //   },
 
-    eventToViewNote(note) {
-      this.note = note;
-      this.mainScreenVisible = false;
-      this.noteScreenVisible = true;
-    },
+  //   eventToViewNote(note) {
+  //     this.note = note;
+  //     this.mainScreenVisible = false;
+  //     this.noteScreenVisible = true;
+  //   },
 
-    async eventToReturnToMainScreen() {
-      await this.getNotes();
-      this.noteScreenVisible = false;
-      this.mainScreenVisible = true;
-    },
+  //   async eventToReturnToMainScreen() {
+  //     await this.getNotes();
+  //     this.noteScreenVisible = false;
+  //     this.mainScreenVisible = true;
+  //   },
 
-    async getNotes() {
-      this.notes = await Request.get();
-      this.loading = false;
-      console.log("\n\nDisplayed data:\n\n");
-      console.log(this.notes);
-    },
-  },
+  //   async getNotes() {
+  //     this.notes = await Request.get();
+  //     this.loading = false;
+  //     console.log("\n\nDisplayed data:\n\n");
+  //     console.log(this.notes);
+  //   },
+  // },
 
-  async mounted() {
-    await this.getNotes();
-    this.mainScreenVisible = true;
-  },
+  // async mounted() {
+  //   await this.getNotes();
+  //   this.mainScreenVisible = true;
+  // },
 };
 </script>
 
@@ -93,5 +93,15 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.text-link {
+  text-decoration: none;
+  outline: none;
+  color: black;
+}
+
+.text-link:hover {
+  color: black;
 }
 </style>

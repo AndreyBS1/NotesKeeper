@@ -53,26 +53,30 @@ export default {
   name: "NoteView",
 
   props: {
-    note: {
-      type: Object,
+    noteId: {
+      type: String,
       default() {
-        return {};
+        return "";
       },
     },
   },
 
   emits: ["back-to-main-screen"],
 
+  data() {
+    return {
+      note: {},
+    };
+  },
+
   computed: {
-    noteObject() {
-      return this.note;
-    },
+    // noteObject() {
+    //   return this.note;
+    // },
 
     isDisabled: {
       get: function () {
-        return this.noteObject.note_title && this.noteObject.note_text
-          ? false
-          : true;
+        return !this.note.note_title && !this.note.note_text;
       },
       set: function (value) {
         return value;
@@ -81,13 +85,13 @@ export default {
   },
 
   methods: {
-    clickOnBackButton() {
-      this.$emit("back-to-main-screen");
-    },
+    // clickOnBackButton() {
+    //   this.$emit("back-to-main-screen");
+    // },
 
     async clickOnSaveButton() {
-      if (this.noteObject.note_title && this.noteObject.note_text) {
-        if (this.noteObject.id) {
+      if (this.note.note_title && this.note.note_text) {
+        if (+this.noteId) {
           await Request.put(this.noteObject);
         } else {
           await Request.post(this.noteObject);
@@ -101,6 +105,15 @@ export default {
       this.isDisabled = true;
       await Request.delete(this.noteObject);
       this.$emit("back-to-main-screen");
+    },
+
+    async getOneNote(noteId) {
+      if (+this.noteId) {
+        this.note = await Request.getOne(noteId);
+      }
+      // this.loading = false;
+      // console.log("\n\nDisplayed data:\n\n");
+      // console.log(this.notes);
     },
   },
 };
