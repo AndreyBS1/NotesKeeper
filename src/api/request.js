@@ -26,9 +26,9 @@ class Request {
       .catch((err) => {
         console.log(err);
       });
-    console.log("\nGet\nResponse:\n\n");
-    console.log(res.data);
-    return res.data;
+    // console.log("\nGet\nResponse:\n\n");
+    // console.log(res.data[0]);
+    return res.data[0];
   }
 
   static async post(data) {

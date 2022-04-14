@@ -19,9 +19,10 @@ const routes = [
     component: NoteView,
   },
   {
-    path: "/notes/:id",
+    path: "/notes/:noteId",
     name: "Existing note",
     component: NoteView,
+    props: true,
   },
 ];
 

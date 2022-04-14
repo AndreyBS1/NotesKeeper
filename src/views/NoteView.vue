@@ -5,30 +5,27 @@
         <b-form-group class="title-input">
           <b-form-input
             size="lg"
-            v-model="noteObject.note_title"
+            v-model="note.note_title"
             placeholder="Note title"
             required
           ></b-form-input>
         </b-form-group>
         <div class="button">
-          <b-button pill variant="outline-success" @click="clickOnSaveButton">
+          <b-button pill variant="outline-success" @click="saveNote">
             Save
           </b-button>
         </div>
         <div class="button">
-          <b-button
-            pill
-            variant="outline-danger"
-            @click="clickOnDeleteButton"
-            :disabled="isDisabled"
-          >
-            Delete
-          </b-button>
+          <router-link to="/">
+            <b-button pill variant="outline-danger" @click="deleteNote">
+              Delete
+            </b-button>
+          </router-link>
         </div>
         <div class="button">
-          <b-button pill variant="outline-dark" @click="clickOnBackButton">
-            Back
-          </b-button>
+          <router-link to="/">
+            <b-button pill variant="outline-dark"> Back </b-button>
+          </router-link>
         </div>
       </div>
       <b-form-group class="text-input-area">
@@ -37,7 +34,7 @@
           rows="13"
           max-rows="100"
           no-resize
-          v-model="noteObject.note_text"
+          v-model="note.note_text"
           placeholder="Note text"
           required
         ></b-form-textarea>
@@ -61,7 +58,10 @@ export default {
     },
   },
 
-  emits: ["back-to-main-screen"],
+  emits: {
+    loading: null,
+    loaded: null,
+  },
 
   data() {
     return {
@@ -69,52 +69,40 @@ export default {
     };
   },
 
-  computed: {
-    // noteObject() {
-    //   return this.note;
-    // },
-
-    isDisabled: {
-      get: function () {
-        return !this.note.note_title && !this.note.note_text;
-      },
-      set: function (value) {
-        return value;
-      },
-    },
-  },
-
   methods: {
-    // clickOnBackButton() {
-    //   this.$emit("back-to-main-screen");
-    // },
-
-    async clickOnSaveButton() {
+    async saveNote() {
       if (this.note.note_title && this.note.note_text) {
         if (+this.noteId) {
-          await Request.put(this.noteObject);
+          this.$emit("loading");
+          await Request.put(this.note);
+          this.$emit("loaded");
         } else {
-          await Request.post(this.noteObject);
+          this.$emit("loading");
+          await Request.post(this.note);
+          this.$emit("loaded");
         }
       } else {
         alert("Please fill in the Title and Text fields!");
       }
     },
 
-    async clickOnDeleteButton() {
-      this.isDisabled = true;
-      await Request.delete(this.noteObject);
-      this.$emit("back-to-main-screen");
+    async deleteNote() {
+      this.$emit("loading");
+      await Request.delete(this.note);
+      this.$emit("loaded");
     },
 
-    async getOneNote(noteId) {
+    async getOneNote() {
       if (+this.noteId) {
-        this.note = await Request.getOne(noteId);
+        this.$emit("loading");
+        this.note = await Request.getOne(this.noteId);
+        this.$emit("loaded");
       }
-      // this.loading = false;
-      // console.log("\n\nDisplayed data:\n\n");
-      // console.log(this.notes);
     },
+  },
+
+  async mounted() {
+    await this.getOneNote();
   },
 };
 </script>
