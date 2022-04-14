@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <custom-header />
-    <main-screen
+    <router-view />
+    <!-- <main-screen
       v-show="mainScreenVisible"
       @create-note="eventToCreateNote"
       @view-note="eventToViewNote"
@@ -11,26 +12,26 @@
       v-show="noteScreenVisible"
       @back-to-main-screen="eventToReturnToMainScreen"
       :note="note"
-    />
+    /> -->
     <div class="loading">
-      <img v-show="loading" src="./assets/loading-infinity.svg" />
+      <img v-show="loading" src="@/assets/loading-infinity.svg" />
     </div>
   </div>
 </template>
 
 <script>
-import CustomHeader from "./components/CustomHeader.vue";
-import MainScreen from "./views/MainScreen.vue";
-import NoteScreen from "./views/NoteScreen.vue";
-import Request from "../api/request";
+import CustomHeader from "@/components/CustomHeader.vue";
+// import MainScreen from "@/views/MainScreen.vue";
+// import NoteScreen from "@/views/NoteScreen.vue";
+import Request from "@/api/request";
 
 export default {
   name: "App",
 
   components: {
     CustomHeader,
-    MainScreen,
-    NoteScreen,
+    // MainScreen,
+    // NoteScreen,
   },
 
   data() {

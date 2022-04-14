@@ -1,13 +1,9 @@
 <template>
   <div class="main-screen">
     <div class="instruments">
-      <b-button
-        pill
-        variant="outline-dark"
-        @click="clickOnCreateButton"
-        >
-          New Note
-        </b-button>
+      <b-button pill variant="outline-dark" @click="clickOnCreateButton">
+        New Note
+      </b-button>
     </div>
     <note-card
       class="note-card"
@@ -25,25 +21,25 @@
 </template>
 
 <script>
-import NoteCard from '../components/NoteCard.vue'
+import NoteCard from "@/components/NoteCard.vue";
 
 export default {
-  name: 'MainScreen',
+  name: "HomepageView",
 
   components: {
     NoteCard,
   },
-    
+
   props: {
     notes: {
       type: Array,
       default() {
         return [];
-      }
-    }
+      },
+    },
   },
 
-  emits: ['create-note', 'view-note'],
+  emits: ["create-note", "view-note"],
 
   computed: {
     notesArray() {
@@ -51,22 +47,22 @@ export default {
     },
 
     hasNotes() {
-      return (this.notesArray.length > 0) ? true : false;
-    }
+      return this.notesArray.length > 0 ? true : false;
+    },
   },
 
   methods: {
     clickOnCreateButton() {
       this.visible = false;
-      this.$emit('create-note');
+      this.$emit("create-note");
     },
-    
+
     clickOnNoteCard(note) {
       this.visible = false;
-      this.$emit('view-note', note);
+      this.$emit("view-note", note);
     },
   },
-}
+};
 </script>
 
 <style scoped>
