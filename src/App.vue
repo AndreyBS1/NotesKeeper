@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <custom-header />
+    <custom-header class="header" />
     <router-view
       v-show="!loading"
       @loading="loading = true"
       @loaded="loading = false"
     />
     <div class="loading" v-show="loading">
-      <img v-show="loading" src="@/assets/loading-infinity.svg" />
+      <img src="@/assets/loading-rolling.svg" />
     </div>
   </div>
 </template>
@@ -34,16 +34,27 @@ export default {
   margin: 0;
   padding: 0;
   background-color: whitesmoke;
-  min-width: 100vw;
+  width: 100vw;
   min-height: 100vh;
+  --min-header-height: 70px;
+}
+
+.header {
+  height: 10vh;
+  max-width: 100%;
+  min-height: var(--min-header-height);
 }
 
 .loading {
-  width: 100%;
-  height: 100%;
+  height: calc(90vh - var(--min-header-height));
+  min-height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.loading img {
+  width: 70px;
 }
 
 .text-link {

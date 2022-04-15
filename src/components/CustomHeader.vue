@@ -34,9 +34,11 @@ export default {
 }
 
 .navbar {
+  height: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 1% 4%;
+  align-items: center;
+  padding: 0% 4%;
 }
 
 .project-name {
