@@ -51,7 +51,6 @@ export default {
 }
 
 .loading {
-  /* height: calc(90vh - var(--min-header-height)); */
   min-height: 200px;
   display: flex;
   justify-content: center;
