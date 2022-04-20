@@ -1,16 +1,16 @@
 <template>
-  <router-link :to="'/notes/' + note.id" class="text-link">
-    <b-card border-variant="dark" no-body>
-      <b-card-body>
-        <b-card-title>
+  <b-card border-variant="dark" no-body>
+    <router-link :to="'/notes/' + note.id" class="text-link">
+      <b-card-body class="note-body">
+        <b-card-title class="note-title">
           {{ note.note_title }}
         </b-card-title>
-        <b-card-text>
+        <b-card-text class="note-text">
           {{ note.note_text }}
         </b-card-text>
       </b-card-body>
-    </b-card>
-  </router-link>
+    </router-link>
+  </b-card>
 </template>
 
 <script>
@@ -28,4 +28,21 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.text-link {
+  width: 100%;
+  height: 100%;
+}
+
+.note-body {
+  max-height: 100%;
+}
+
+.note-title {
+  max-height: 10%;
+}
+
+.note-text {
+  max-height: 90%;
+}
+</style>

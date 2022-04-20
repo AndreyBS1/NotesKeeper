@@ -1,18 +1,26 @@
 <template>
-  <div class="main-screen">
+  <div class="home-page">
     <div class="instruments">
       <router-link to="/notes/new">
         <b-button pill variant="outline-dark"> New Note </b-button>
       </router-link>
     </div>
 
-    <note-card
-      class="note-card"
-      v-show="hasNotes"
-      v-for="note in notes"
-      :key="note.id"
-      :note="note"
-    />
+    <div class="note-group">
+      <note-card
+        class="note-card"
+        v-show="hasNotes"
+        v-for="note in notes"
+        :key="note.id"
+        :note="note"
+      />
+      <!-- <note-card
+        v-show="hasNotes"
+        v-for="note in notes"
+        :key="note.id"
+        :note="note"
+      /> -->
+    </div>
 
     <div class="no-notes" v-show="!hasNotes">
       <h3>There's no Notes to show!</h3>
@@ -64,26 +72,35 @@ export default {
 </script>
 
 <style scoped>
-.main-screen {
+.home-page {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  /* align-items: center; */
+  /* flex-wrap: wrap; */
   padding: 3% 5%;
 }
 
 .instruments {
-  width: 100%;
+  /* width: 100%; */
+  height: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.note-group {
+  height: 90%;
+  display: flex;
+  justify-content: center;
+}
+
 .note-card {
   width: 30%;
-  height: 100%;
-  margin: 3% 0;
+  height: 40%;
+  margin: 4%;
   cursor: pointer;
+  /* overflow: hidden; */
 }
 
 .no-notes {
